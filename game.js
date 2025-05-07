@@ -16,7 +16,7 @@ deck.forEach((icon) => {
   card.dataset.icon = icon;
 
 card.innerHTML = `
-  <div class="front">🎁</div>
+  <div class="front"></div>
   <div class="back">
     <img src="assets/img/${icon}.png" alt="${icon}" />
   </div>
