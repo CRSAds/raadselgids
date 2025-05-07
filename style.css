@@ -133,3 +133,21 @@ header p {
   cursor: pointer;
   margin-top: 1.5em;
 }
+
+@media (max-width: 768px) {
+  .game-board {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    padding: 0 15px;
+  }
+
+  .container {
+    padding: 1.5em 1em;
+  }
+
+  .card .front img,
+  .card .back img {
+    width: 60%;
+    height: 60%;
+  }
+}
