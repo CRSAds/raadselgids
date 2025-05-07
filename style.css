@@ -6,10 +6,10 @@
 }
 
 body {
-  margin: 0;
+  margin: 0;  
   font-family: 'Zilla Slab', serif;
   min-height: 100vh;
-  overflow: hidden;
+  overflow-x: hidden; /* ✅ voorkomt scroll rechts */
   position: relative;
   background: #e36ab1;
 }
@@ -141,6 +141,11 @@ header p {
   .game-board {
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
+    width: 100%;
+    max-width: 100%;
+    padding: 0 12px; /* ✅ houd netjes binnen scherm */
+    margin: 2em auto;
+    box-sizing: border-box;
   }
 
   .container {
