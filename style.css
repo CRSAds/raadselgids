@@ -38,8 +38,8 @@ main {
   padding: 2em;
   border-radius: 8px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-  width: 90%;
-  max-width: 700px;
+  width: 100%;
+  max-width: 740px;
   color: #222;
   text-align: center;
   box-sizing: border-box;
@@ -55,22 +55,20 @@ header p {
   font-size: 1rem;
 }
 
-/* === KAARTEN & LAYOUT === */
+/* === GAME GRID === */
 
 .game-board {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 15px;
-  justify-items: center;
   width: 100%;
-  max-width: 640px;
   margin: 2em auto;
   box-sizing: border-box;
-  padding: 0; /* 🧼 CLEAN: padding weg */
 }
 
+/* === CARD === */
+
 .card {
-  width: 100%;
   aspect-ratio: 1 / 1;
   position: relative;
   transform-style: preserve-3d;
@@ -80,6 +78,7 @@ header p {
   border-radius: 12px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.08);
   background: #fff;
+  width: 100%;
 }
 
 .card.flip {
@@ -125,8 +124,6 @@ header p {
   pointer-events: none;
 }
 
-/* === KNOP === */
-
 #next-btn {
   padding: 12px 24px;
   font-size: 1.1rem;
@@ -138,19 +135,16 @@ header p {
   margin-top: 1.5em;
 }
 
-/* === MOBIEL RESPONSIVE === */
+/* === RESPONSIVE === */
 
 @media (max-width: 768px) {
   .game-board {
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
-    max-width: 95vw; /* ✅ zorgt dat grid binnen wit vlak blijft */
-    margin: 2em auto;
   }
 
   .container {
-    padding: 1.5em 0.5em;
-    width: 100%;
+    padding: 1.5em;
   }
 
   header h1 {
