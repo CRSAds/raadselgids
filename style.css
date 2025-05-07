@@ -55,6 +55,8 @@ header p {
   font-size: 1rem;
 }
 
+/* === KAARTEN & LAYOUT === */
+
 .game-board {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -62,7 +64,7 @@ header p {
   justify-items: center;
   padding: 0 20px;
   width: fit-content;
-  margin: 2em auto; /* 🔥 dit is de magic line */
+  margin: 2em auto;
   box-sizing: border-box;
 }
 
@@ -122,6 +124,8 @@ header p {
   pointer-events: none;
 }
 
+/* === KNOP === */
+
 #next-btn {
   padding: 12px 24px;
   font-size: 1.1rem;
@@ -133,16 +137,16 @@ header p {
   margin-top: 1.5em;
 }
 
-/* 📱 Mobiel optimalisatie */
+/* === MOBIEL RESPONSIVE === */
+
 @media (max-width: 768px) {
   .game-board {
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
     padding: 0 10px;
     width: fit-content;
-    margin: 2em auto; /* zorg ook hier dat het gecentreerd blijft */
+    margin: 2em auto;
   }
-}
 
   .container {
     padding: 1.5em 0.5em;
@@ -155,10 +159,6 @@ header p {
 
   header p {
     font-size: 0.95rem;
-  }
-
-  .card {
-    max-width: 90px;
   }
 
   .card .front img,
