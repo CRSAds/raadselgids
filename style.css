@@ -106,3 +106,9 @@ header p {
   cursor: pointer;
   margin-top: 1.5em;
 }
+.card .back img {
+  width: 60%;
+  height: 60%;
+  object-fit: contain;
+  pointer-events: none;
+}
