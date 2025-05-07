@@ -6,10 +6,10 @@
 }
 
 body {
-  margin: 0;  
+  margin: 0;
   font-family: 'Zilla Slab', serif;
   min-height: 100vh;
-  overflow-x: hidden; /* ✅ voorkomt scroll rechts */
+  overflow-x: hidden;
   position: relative;
   background: #e36ab1;
 }
@@ -40,6 +40,7 @@ main {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
   width: 100%;
   max-width: 740px;
+  overflow: hidden;
   color: #222;
   text-align: center;
   box-sizing: border-box;
@@ -62,13 +63,15 @@ header p {
   grid-template-columns: repeat(4, 1fr);
   gap: 15px;
   width: 100%;
-  margin: 2em auto;
+  max-width: 100%;
   box-sizing: border-box;
+  justify-items: center;
 }
 
 /* === CARD === */
 
 .card {
+  width: 100%;
   aspect-ratio: 1 / 1;
   position: relative;
   transform-style: preserve-3d;
@@ -78,7 +81,6 @@ header p {
   border-radius: 12px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.08);
   background: #fff;
-  width: 100%;
 }
 
 .card.flip {
@@ -124,6 +126,8 @@ header p {
   pointer-events: none;
 }
 
+/* === BUTTON === */
+
 #next-btn {
   padding: 12px 24px;
   font-size: 1.1rem;
@@ -135,21 +139,18 @@ header p {
   margin-top: 1.5em;
 }
 
-/* === RESPONSIVE === */
+/* === RESPONSIVE FIXES === */
 
 @media (max-width: 768px) {
   .game-board {
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
-    width: 100%;
-    max-width: 100%;
-    padding: 0 12px; /* ✅ houd netjes binnen scherm */
-    margin: 2em auto;
-    box-sizing: border-box;
+    padding: 0 10px;
+    margin: 0 auto;
   }
 
   .container {
-    padding: 1.5em;
+    padding: 1.5em 1em;
   }
 
   header h1 {
