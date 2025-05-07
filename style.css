@@ -38,10 +38,11 @@ main {
   padding: 2em;
   border-radius: 8px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  width: 90%;
   max-width: 700px;
-  width: 100%;
   color: #222;
   text-align: center;
+  box-sizing: border-box;
 }
 
 header h1 {
@@ -61,7 +62,6 @@ header p {
   grid-template-columns: repeat(4, 1fr);
   gap: 15px;
   padding: 0 20px;
-  justify-items: center;
   box-sizing: border-box;
 }
 
@@ -137,21 +137,22 @@ header p {
   .game-board {
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
-    padding: 0 15px;
+    padding: 0 10px;
   }
-}
 
   .container {
-    padding: 1.5em 1em;
+    padding: 1.5em 0.5em;
+    width: 100%;
   }
 
   header h1 {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
 
   header p {
     font-size: 0.95rem;
   }
+}
 
   .card {
     max-width: 90px;
