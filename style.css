@@ -60,11 +60,13 @@ header p {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 15px;
-  justify-items: center; /* kaarten centreren binnen de grid */
-  padding: 0 10px;
+  padding: 0 20px;
+  justify-items: center;
+  box-sizing: border-box;
 }
 
 .card {
+  width: 100%;
   aspect-ratio: 1 / 1;
   position: relative;
   transform-style: preserve-3d;
@@ -74,8 +76,6 @@ header p {
   border-radius: 12px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.08);
   background: #fff;
-  width: 100%;
-  max-width: 100px;
 }
 
 .card.flip {
@@ -139,6 +139,7 @@ header p {
     gap: 10px;
     padding: 0 15px;
   }
+}
 
   .container {
     padding: 1.5em 1em;
