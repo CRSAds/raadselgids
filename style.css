@@ -91,10 +91,18 @@ header p {
 }
 
 .card .front {
-  background: linear-gradient(145deg, #f5a9ff, #b86ce6);
-  color: white;
-  font-size: 2rem;
-  font-weight: bold;
+  background: repeating-linear-gradient(
+    45deg,
+    #e36ab1,
+    #e36ab1 10px,
+    #9054c4 10px,
+    #9054c4 20px
+  );
+  border-radius: 10px;
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transform: rotateY(0deg);
 }
 
