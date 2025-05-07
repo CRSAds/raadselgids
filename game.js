@@ -16,7 +16,7 @@ deck.forEach((icon) => {
   card.dataset.icon = icon;
 
 card.innerHTML = `
-  <div class="front"><img src="assets/img/question-mark.png" alt="?" /></div>
+  <div class="front"><img src="assets/img/card-icon.png" alt="?" /></div>
   <div class="back">
     <img src="assets/img/${icon}.png" alt="${icon}" />
   </div>
