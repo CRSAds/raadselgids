@@ -91,19 +91,20 @@ header p {
 }
 
 .card .front {
-  background: repeating-linear-gradient(
-    45deg,
-    #e36ab1,
-    #e36ab1 10px,
-    #9054c4 10px,
-    #9054c4 20px
-  );
-  border-radius: 10px;
-  backface-visibility: hidden;
+  background-color: #1c3e5c; /* iets lichter dan achterkant */
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 10px;
+  backface-visibility: hidden;
   transform: rotateY(0deg);
+}
+
+.card .front img {
+  width: 40%;
+  height: 40%;
+  filter: brightness(0) invert(1); /* maakt wit */
+  pointer-events: none;
 }
 
 .card .back {
