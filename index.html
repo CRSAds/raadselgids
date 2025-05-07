@@ -3,11 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Speel & Win - Memoryspel</title>
+  <title>Speel & Win</title>
   <link rel="stylesheet" href="style.css" />
-  <!-- Confetti bibliotheek -->
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@600&display=swap" rel="stylesheet">
 </head>
 <body>
   <main>
@@ -16,13 +13,12 @@
         <h1>🎯 TEST JE GEHEUGEN EN WIN!</h1>
         <p>Onthoud waar de paren liggen en maak kans op een prijs!</p>
       </header>
-
-      <section class="game-board" id="game-board"></section>
-
-      <button id="next-btn" style="display:none;">Volgende stap ➡️</button>
+      <section class="game-board" id="game-board">
+        <!-- Cards worden gegenereerd met JS -->
+      </section>
+      <button id="next-btn" style="display: none;">Ga verder</button>
     </div>
   </main>
-
   <script src="game.js"></script>
 </body>
 </html>
