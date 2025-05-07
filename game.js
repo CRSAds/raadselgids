@@ -1,6 +1,6 @@
 const board = document.getElementById('game-board');
 const nextBtn = document.getElementById('next-btn');
-const icons = ['🏆', '🎯', '🎁', '💎', '🪙', '🎉'];
+const icons = ['pineapple', 'grape', 'cherries', 'bananas', 'watermelon', 'strawberry'];
 let cards = [];
 let firstCard = null;
 let lockBoard = false;
@@ -15,10 +15,12 @@ deck.forEach((icon) => {
   card.classList.add('card');
   card.dataset.icon = icon;
 
-  card.innerHTML = `
-    <div class="front">❓</div>
-    <div class="back">${icon}</div>
-  `;
+card.innerHTML = `
+  <div class="front">?</div>
+  <div class="back">
+    <img src="assets/img/${icon}.png" alt="${icon}" />
+  </div>
+`;
 
   card.addEventListener('click', () => handleCardClick(card));
   board.appendChild(card);
