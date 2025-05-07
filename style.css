@@ -62,11 +62,14 @@ header p {
 
 .card {
   aspect-ratio: 1 / 1;
-  background: transparent;
+  background: #e0e0e0;
   position: relative;
   transform-style: preserve-3d;
   transition: transform 0.4s;
   cursor: pointer;
+  border: 3px solid #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 .card.flip {
@@ -92,8 +95,19 @@ header p {
 }
 
 .card .back {
-  background: gold;
+  background-color: #0a2940;
   transform: rotateY(180deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.card .back img {
+  width: 60%;
+  height: 60%;
+  object-fit: contain;
+  pointer-events: none;
 }
 
 #next-btn {
@@ -105,10 +119,4 @@ header p {
   border-radius: 10px;
   cursor: pointer;
   margin-top: 1.5em;
-}
-.card .back img {
-  width: 60%;
-  height: 60%;
-  object-fit: contain;
-  pointer-events: none;
 }
