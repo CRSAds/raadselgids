@@ -58,18 +58,18 @@ header p {
 /* === KAARTEN & LAYOUT === */
 
 .game-board {
+  width: 100%;
+  max-width: 600px;
+  margin: 2em auto;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 15px;
-  justify-items: center;
   padding: 0 20px;
-  width: fit-content;
-  margin: 2em auto;
   box-sizing: border-box;
 }
 
 .card {
-  width: min(100%, 110px);
+  width: 100%;
   aspect-ratio: 1 / 1;
   position: relative;
   transform-style: preserve-3d;
@@ -143,9 +143,7 @@ header p {
   .game-board {
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
-    padding: 0 10px;
-    width: fit-content;
-    margin: 2em auto;
+    padding: 0 15px;
   }
 
   .container {
