@@ -1,73 +1,80 @@
 const board = document.getElementById('game-board');
 const nextBtn = document.getElementById('next-btn');
-const icons = ['pineapple', 'grape', 'cherries', 'bananas', 'watermelon', 'strawberry'];
-let cards = [];
-let firstCard = null;
-let lockBoard = false;
+
+const icons = [
+  'pineapple.png',
+  'grape.png',
+  'cherries.png',
+  'bananas.png',
+  'watermelon.png',
+  'strawberry.png'
+];
+
+let cardValues = [...icons, ...icons]; // 12 kaarten, 6 paren
+let flippedCards = [];
 let matchedPairs = 0;
 
-// Deck van 6 paren, shuffled
-const deck = [...icons, ...icons].sort(() => 0.5 - Math.random());
+function shuffle(array) {
+  return array.sort(() => 0.5 - Math.random());
+}
 
-// Bouw de kaarten
-deck.forEach((icon) => {
+function createCard(icon) {
   const card = document.createElement('div');
   card.classList.add('card');
-  card.dataset.icon = icon;
+  card.innerHTML = `
+    <div class="front">
+      <img src="assets/img/card-icon.png" alt="?" />
+    </div>
+    <div class="back">
+      <img src="assets/img/${icon}" alt="fruit" />
+    </div>
+  `;
 
-card.innerHTML = `
-  <div class="front"><img src="assets/img/card-icon.png" alt="?" /></div>
-  <div class="back">
-    <img src="assets/img/${icon}.png" alt="${icon}" />
-  </div>
-`;
+  card.addEventListener('click', () => handleFlip(card, icon));
+  return card;
+}
 
-  card.addEventListener('click', () => handleCardClick(card));
-  board.appendChild(card);
-  cards.push(card);
-});
-
-function handleCardClick(card) {
-  if (lockBoard || card.classList.contains('flip')) return;
+function handleFlip(card, icon) {
+  if (
+    card.classList.contains('flip') ||
+    flippedCards.length >= 2 ||
+    card.dataset.locked === 'true'
+  ) return;
 
   card.classList.add('flip');
+  flippedCards.push({ card, icon });
 
-  if (!firstCard) {
-    firstCard = card;
-    return;
-  }
-
-  const secondCard = card;
-
-  if (firstCard.dataset.icon === secondCard.dataset.icon) {
-    matchedPairs++;
-    firstCard = null;
-
-    if (matchedPairs === icons.length) {
+  if (flippedCards.length === 2) {
+    const [first, second] = flippedCards;
+    if (first.icon === second.icon) {
+      first.card.dataset.locked = true;
+      second.card.dataset.locked = true;
+      flippedCards = [];
+      matchedPairs++;
+      if (matchedPairs === icons.length) {
+        nextBtn.style.display = 'inline-block';
+      }
+    } else {
       setTimeout(() => {
-        showConfetti();
-        nextBtn.style.display = 'block';
-      }, 500);
+        first.card.classList.remove('flip');
+        second.card.classList.remove('flip');
+        flippedCards = [];
+      }, 1000);
     }
-  } else {
-    lockBoard = true;
-    setTimeout(() => {
-      firstCard.classList.remove('flip');
-      secondCard.classList.remove('flip');
-      firstCard = null;
-      lockBoard = false;
-    }, 1000);
   }
 }
 
-function showConfetti() {
-  confetti({
-    particleCount: 150,
-    spread: 80,
-    origin: { y: 0.3 },
+function startGame() {
+  board.innerHTML = '';
+  flippedCards = [];
+  matchedPairs = 0;
+  shuffle(cardValues).forEach(icon => {
+    board.appendChild(createCard(icon));
   });
 }
 
 nextBtn.addEventListener('click', () => {
-  window.location.href = 'gegevens.html';
+  window.location.href = 'gegevens.html'; // Pas dit aan indien andere flow
 });
+
+startGame();
