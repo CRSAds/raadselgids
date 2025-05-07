@@ -6,10 +6,11 @@ let firstCard = null;
 let lockBoard = false;
 let matchedPairs = 0;
 
-// Dubbel array voor 6 paren
+// Deck van 6 paren, shuffled
 const deck = [...icons, ...icons].sort(() => 0.5 - Math.random());
 
-deck.forEach((icon, index) => {
+// Bouw de kaarten
+deck.forEach((icon) => {
   const card = document.createElement('div');
   card.classList.add('card');
   card.dataset.icon = icon;
@@ -35,11 +36,14 @@ function handleCardClick(card) {
   }
 
   const secondCard = card;
+
   if (firstCard.dataset.icon === secondCard.dataset.icon) {
     matchedPairs++;
     firstCard = null;
+
     if (matchedPairs === icons.length) {
       setTimeout(() => {
+        showConfetti();
         nextBtn.style.display = 'block';
       }, 500);
     }
@@ -52,6 +56,14 @@ function handleCardClick(card) {
       lockBoard = false;
     }, 1000);
   }
+}
+
+function showConfetti() {
+  confetti({
+    particleCount: 150,
+    spread: 80,
+    origin: { y: 0.3 },
+  });
 }
 
 nextBtn.addEventListener('click', () => {
