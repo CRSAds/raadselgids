@@ -1,4 +1,11 @@
-/* Basis */
+@import url('https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@600&display=swap');
+
+/* Achtergrondanimatie */
+@keyframes bgMove {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 100% 100%; }
+}
+
 body {
   margin: 0;
   font-family: 'Zilla Slab', serif;
@@ -18,11 +25,6 @@ body::before {
   z-index: -1;
   filter: blur(80px);
   transform: scale(1.2);
-}
-
-@keyframes bgMove {
-  0% { background-position: 0% 0%; }
-  100% { background-position: 100% 100%; }
 }
 
 main {
@@ -53,19 +55,23 @@ header p {
   margin-top: 0;
 }
 
-/* GRID */
+/* Game board */
 .game-board {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 15px;
   margin-top: 2em;
   justify-items: center;
+  justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
 }
 
+/* Cards */
 .card {
   width: 100%;
-  aspect-ratio: 1 / 1;
   max-width: 120px;
+  aspect-ratio: 1 / 1;
   background: transparent;
   transform-style: preserve-3d;
   transition: transform 0.4s ease;
@@ -109,7 +115,7 @@ header p {
   pointer-events: none;
 }
 
-/* Next button */
+/* Knop */
 #next-btn {
   margin-top: 2em;
   padding: 12px 24px;
@@ -122,11 +128,20 @@ header p {
   display: none;
 }
 
-/* 📱 Mobiel */
+/* 📱 Mobiel fix */
 @media (max-width: 768px) {
   .game-board {
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
+    padding: 0 10px;
+  }
+
+  .card {
+    max-width: 100%;
+  }
+
+  .container {
+    padding: 1.5em 1em;
   }
 
   header h1 {
@@ -135,9 +150,5 @@ header p {
 
   header p {
     font-size: 0.95rem;
-  }
-
-  .card {
-    max-width: 100px;
   }
 }
