@@ -1,5 +1,5 @@
 const cards = [
-  "banana", "cherry", "grape",
+  "bananas", "cherries", "grape",
   "pineapple", "strawberry", "watermelon"
 ];
 
@@ -20,13 +20,13 @@ function createCard(name) {
   const front = document.createElement("div");
   front.classList.add("front");
   const frontImg = document.createElement("img");
-  frontImg.src = "img/front-icon.png"; // vervang door je front icoon
+  frontImg.src = "assets/img/question-mark.png";
   front.appendChild(frontImg);
 
   const back = document.createElement("div");
   back.classList.add("back");
   const backImg = document.createElement("img");
-  backImg.src = `img/${name}.png`;
+  backImg.src = `assets/img/${name}.png`;
   back.appendChild(backImg);
 
   card.appendChild(front);
@@ -52,7 +52,7 @@ function flipCard() {
   if (isMatch) {
     disableCards();
   } else {
-    setTimeout(unflipCards, 800);
+    setTimeout(unflipCards, 700); // flikker fix: iets kortere timeout
   }
 }
 
