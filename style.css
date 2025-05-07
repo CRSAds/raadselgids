@@ -59,11 +59,10 @@ header p {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 15px;
-  margin: 2em auto;
   justify-items: center;
   padding: 0 20px;
-  width: 100%;
-  max-width: 500px;
+  width: fit-content;
+  margin: 2em auto; /* 🔥 dit is de magic line */
   box-sizing: border-box;
 }
 
@@ -139,9 +138,11 @@ header p {
   .game-board {
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
-    max-width: 360px;
     padding: 0 10px;
+    width: fit-content;
+    margin: 2em auto; /* zorg ook hier dat het gecentreerd blijft */
   }
+}
 
   .container {
     padding: 1.5em 0.5em;
