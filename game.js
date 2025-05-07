@@ -20,7 +20,7 @@ function createCard(name) {
   const front = document.createElement("div");
   front.classList.add("front");
   const frontImg = document.createElement("img");
-  frontImg.src = "assets/img/question-mark.png";
+  frontImg.src = "assets/img/card-icon.png";
   front.appendChild(frontImg);
 
   const back = document.createElement("div");
