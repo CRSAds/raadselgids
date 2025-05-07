@@ -134,35 +134,3 @@ header p {
   cursor: pointer;
   margin-top: 1.5em;
 }
-
-/* === RESPONSIVE === */
-
-@media (max-width: 768px) {
-  .game-board {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    width: 100%;
-    max-width: 100%;
-    padding: 0 12px; /* ✅ houd netjes binnen scherm */
-    margin: 2em auto;
-    box-sizing: border-box;
-  }
-
-  .container {
-    padding: 1.5em;
-  }
-
-  header h1 {
-    font-size: 1.4rem;
-  }
-
-  header p {
-    font-size: 0.95rem;
-  }
-
-  .card .front img,
-  .card .back img {
-    width: 55%;
-    height: 55%;
-  }
-}
