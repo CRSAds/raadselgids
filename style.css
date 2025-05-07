@@ -59,13 +59,16 @@ header p {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 15px;
-  justify-content: center;
   margin: 2em auto;
-  width: fit-content;
+  justify-items: center;
+  padding: 0 20px;
+  width: 100%;
+  max-width: 500px;
+  box-sizing: border-box;
 }
 
 .card {
-  width: 100%;
+  width: min(100%, 110px);
   aspect-ratio: 1 / 1;
   position: relative;
   transform-style: preserve-3d;
@@ -136,8 +139,8 @@ header p {
   .game-board {
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
-    justify-content: center;
-    width: fit-content;
+    max-width: 360px;
+    padding: 0 10px;
   }
 
   .container {
