@@ -58,14 +58,15 @@ header p {
 /* === KAARTEN & LAYOUT === */
 
 .game-board {
-  width: 100%;
-  max-width: 600px;
-  margin: 2em auto;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 15px;
-  padding: 0 20px;
+  justify-items: center;
+  width: 100%;
+  max-width: 640px;
+  margin: 2em auto;
   box-sizing: border-box;
+  padding: 0; /* 🧼 CLEAN: padding weg */
 }
 
 .card {
@@ -143,7 +144,8 @@ header p {
   .game-board {
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
-    padding: 0 15px;
+    max-width: 95vw; /* ✅ zorgt dat grid binnen wit vlak blijft */
+    margin: 2em auto;
   }
 
   .container {
