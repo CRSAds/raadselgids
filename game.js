@@ -1,80 +1,40 @@
-const board = document.getElementById('game-board');
-const nextBtn = document.getElementById('next-btn');
-
-const icons = [
-  'pineapple.png',
-  'grape.png',
-  'cherries.png',
-  'bananas.png',
-  'watermelon.png',
-  'strawberry.png'
+const cardsArray = [
+  "pineapple", "grape", "cherries", "bananas", "watermelon", "strawberry"
 ];
+let cards = [...cardsArray, ...cardsArray];
 
-let cardValues = [...icons, ...icons]; // 12 kaarten, 6 paren
-let flippedCards = [];
-let matchedPairs = 0;
+cards.sort(() => 0.5 - Math.random());
 
-function shuffle(array) {
-  return array.sort(() => 0.5 - Math.random());
-}
-
-function createCard(icon) {
-  const card = document.createElement('div');
-  card.classList.add('card');
+const board = document.getElementById("game-board");
+cards.forEach((name) => {
+  const card = document.createElement("div");
+  card.classList.add("card");
+  card.dataset.name = name;
   card.innerHTML = `
-    <div class="front">
-      <img src="assets/img/card-icon.png" alt="?" />
-    </div>
-    <div class="back">
-      <img src="assets/img/${icon}" alt="fruit" />
-    </div>
-  `;
-
-  card.addEventListener('click', () => handleFlip(card, icon));
-  return card;
-}
-
-function handleFlip(card, icon) {
-  if (
-    card.classList.contains('flip') ||
-    flippedCards.length >= 2 ||
-    card.dataset.locked === 'true'
-  ) return;
-
-  card.classList.add('flip');
-  flippedCards.push({ card, icon });
-
-  if (flippedCards.length === 2) {
-    const [first, second] = flippedCards;
-    if (first.icon === second.icon) {
-      first.card.dataset.locked = true;
-      second.card.dataset.locked = true;
-      flippedCards = [];
-      matchedPairs++;
-      if (matchedPairs === icons.length) {
-        nextBtn.style.display = 'inline-block';
-      }
-    } else {
-      setTimeout(() => {
-        first.card.classList.remove('flip');
-        second.card.classList.remove('flip');
-        flippedCards = [];
-      }, 1000);
-    }
-  }
-}
-
-function startGame() {
-  board.innerHTML = '';
-  flippedCards = [];
-  matchedPairs = 0;
-  shuffle(cardValues).forEach(icon => {
-    board.appendChild(createCard(icon));
-  });
-}
-
-nextBtn.addEventListener('click', () => {
-  window.location.href = 'gegevens.html'; // Pas dit aan indien andere flow
+    <div class="inner">
+      <div class="front"><img src="icons/eye.svg" /></div>
+      <div class="back"><img src="icons/${name}.png" /></div>
+    </div>`;
+  board.appendChild(card);
 });
 
-startGame();
+let flippedCards = [];
+board.addEventListener("click", (e) => {
+  const card = e.target.closest(".card");
+  if (!card || card.classList.contains("flip") || flippedCards.length === 2) return;
+  card.classList.add("flip");
+  flippedCards.push(card);
+
+  if (flippedCards.length === 2) {
+    const [a, b] = flippedCards;
+    if (a.dataset.name === b.dataset.name) {
+      flippedCards = [];
+    } else {
+      setTimeout(() => {
+        a.classList.remove("flip");
+        b.classList.remove("flip");
+        flippedCards = [];
+      }, 800);
+    }
+  }
+});
