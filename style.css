@@ -1,17 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@600&display=swap');
 
-@keyframes bgMove {
-  0% { background-position: 0% 0%; }
-  100% { background-position: 100% 100%; }
-}
-
 body {
   margin: 0;
   font-family: 'Zilla Slab', serif;
   min-height: 100vh;
   overflow-x: hidden;
-  position: relative;
   background: #e36ab1;
+  position: relative;
 }
 
 body::before {
@@ -26,6 +21,11 @@ body::before {
   transform: scale(1.2);
 }
 
+@keyframes bgMove {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 100% 100%; }
+}
+
 main {
   display: flex;
   justify-content: center;
@@ -36,10 +36,10 @@ main {
 .container {
   background: white;
   padding: 2em;
-  border-radius: 8px;
+  border-radius: 12px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  max-width: 700px;
   width: 100%;
-  max-width: 740px;
   color: #222;
   text-align: center;
   box-sizing: border-box;
@@ -55,34 +55,37 @@ header p {
   font-size: 1rem;
 }
 
-/* === GAME GRID === */
-
 .game-board {
+  width: 100%;
+  margin: 2em auto;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 15px;
-  width: 100%;
-  max-width: calc(100% - 20px); /* voorkomt overflow binnen container */
   box-sizing: border-box;
   justify-items: center;
 }
 
-/* === CARD === */
-
 .card {
-  width: 95%;
-  aspect-ratio: 1 / 1;
-  position: relative;
-  transform-style: preserve-3d;
-  transition: transform 0.4s;
-  cursor: pointer;
+  perspective: 1000px;
   border: 6px solid white;
   border-radius: 12px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.08);
-  background: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  background: white;
+  width: 100%;
+  max-width: 110px;
+  aspect-ratio: 1 / 1;
 }
 
-.card.flip {
+.card .inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease;
+  will-change: transform;
+}
+
+.card.flip .inner {
   transform: rotateY(180deg);
 }
 
@@ -93,6 +96,7 @@ header p {
   height: 100%;
   border-radius: 10px;
   backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -102,69 +106,37 @@ header p {
 
 .card .front {
   background-color: #dbe9f4;
-  transform: rotateY(0deg);
-}
-
-.card .front img {
-  width: 40%;
-  height: 40%;
-  object-fit: contain;
-  pointer-events: none;
 }
 
 .card .back {
   background-color: #0a2940;
   transform: rotateY(180deg);
-  padding: 10px;
 }
 
+.card .front img,
 .card .back img {
-  width: 60%;
-  height: 60%;
+  width: 55%;
+  height: 55%;
   object-fit: contain;
   pointer-events: none;
 }
 
-/* === BUTTON === */
-
-#next-btn {
-  padding: 12px 24px;
-  font-size: 1.1rem;
-  border: none;
-  background: #28c76f;
-  color: white;
-  border-radius: 10px;
-  cursor: pointer;
-  margin-top: 1.5em;
-}
-
-/* === RESPONSIVE FIXES === */
-
+/* Mobile styles */
 @media (max-width: 768px) {
   .container {
     padding: 1.5em 1em;
-    width: 100%;
-    box-sizing: border-box;
   }
 
   .game-board {
     grid-template-columns: repeat(3, 1fr);
     gap: 12px;
-    width: 100%;
     padding: 0;
     margin: 0 auto;
-    box-sizing: border-box;
     justify-items: center;
+    max-width: 360px;
   }
 
   .card {
-    width: calc(100% - 10px); /* past beter binnen de grid */
     max-width: 100px;
-  }
-
-  .card .front img,
-  .card .back img {
-    width: 55%;
-    height: 55%;
   }
 }
