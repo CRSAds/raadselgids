@@ -91,7 +91,7 @@ header p {
 }
 
 .card .front {
-  background-color: #1c3e5c; /* iets lichter dan achterkant */
+  background-color: #dbe9f4; /* veel lichter dan achterkant */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -103,7 +103,7 @@ header p {
 .card .front img {
   width: 40%;
   height: 40%;
-  filter: brightness(0) invert(1); /* maakt wit */
+  object-fit: contain;
   pointer-events: none;
 }
 
