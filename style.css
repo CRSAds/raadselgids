@@ -125,18 +125,21 @@ header p {
 @media (max-width: 768px) {
   .container {
     padding: 1.5em 1em;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .game-board {
     grid-template-columns: repeat(3, 1fr);
     gap: 12px;
-    padding: 0;
+    width: 100%;
+    max-width: 340px;
     margin: 0 auto;
     justify-items: center;
-    max-width: 360px;
   }
 
   .card {
+    width: 100%;
     max-width: 100px;
   }
 }
