@@ -35,10 +35,10 @@ main {
 
 .container {
   background: white;
-  padding: 1em;
-  border-radius: 8px;
+  padding: 2em;
+  border-radius: 12px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-  width: 100%;
+  width: 95%;
   max-width: 900px;
   box-sizing: border-box;
   text-align: center;
@@ -56,25 +56,23 @@ header p {
 
 .game-board {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 10px;
-  justify-items: center;
   justify-content: center;
   margin-top: 2em;
-  padding: 0 5px;
-  box-sizing: border-box;
+  padding: 0;
 }
 
 .card {
   width: 100%;
-  max-width: 120px;
+  max-width: 160px;
   aspect-ratio: 1 / 1;
   background: transparent;
   transform-style: preserve-3d;
   transition: transform 0.4s ease;
   cursor: pointer;
   position: relative;
-  border-radius: 8px;
+  border-radius: 10px;
   border: 6px solid #fff;
   box-shadow: 0 2px 4px rgba(0,0,0,0.08);
 }
@@ -88,7 +86,7 @@ header p {
   position: absolute;
   width: 100%;
   height: 100%;
-  border-radius: 8px;
+  border-radius: 10px;
   backface-visibility: hidden;
   display: flex;
   align-items: center;
@@ -127,21 +125,20 @@ header p {
 /* ✅ Mobiel */
 @media (max-width: 768px) {
   .container {
-    padding: 10px;
+    padding: 1em 10px;
   }
 
   .game-board {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
-    padding: 0 10px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
   }
 
   .card {
-    max-width: 90px;
+    max-width: 100px;
   }
 
   header h1 {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
 
   header p {
