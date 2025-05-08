@@ -1,11 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@600&display=swap');
-
-/* Achtergrondanimatie */
-@keyframes bgMove {
-  0% { background-position: 0% 0%; }
-  100% { background-position: 100% 100%; }
-}
-
+/* Basis */
 body {
   margin: 0;
   font-family: 'Zilla Slab', serif;
@@ -27,6 +20,11 @@ body::before {
   transform: scale(1.2);
 }
 
+@keyframes bgMove {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 100% 100%; }
+}
+
 main {
   display: flex;
   justify-content: center;
@@ -39,12 +37,14 @@ main {
   padding: 2em;
   border-radius: 12px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-  width: 90%;
-  max-width: 800px;
+  width: 100%;
+  max-width: 900px;
   box-sizing: border-box;
   text-align: center;
+  margin: 0 auto;
 }
 
+/* Titels */
 header h1 {
   margin-bottom: 0.5em;
   font-size: 2rem;
@@ -55,23 +55,19 @@ header p {
   margin-top: 0;
 }
 
-/* Game board */
+/* Grid */
 .game-board {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 15px;
+  gap: 20px;
   margin-top: 2em;
   justify-items: center;
-  justify-content: center;
-  width: 100%;
-  box-sizing: border-box;
 }
 
-/* Cards */
 .card {
   width: 100%;
-  max-width: 120px;
   aspect-ratio: 1 / 1;
+  max-width: 130px;
   background: transparent;
   transform-style: preserve-3d;
   transition: transform 0.4s ease;
@@ -128,20 +124,11 @@ header p {
   display: none;
 }
 
-/* 📱 Mobiel fix */
+/* 📱 Mobiel */
 @media (max-width: 768px) {
-  .game-board {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    padding: 0 10px;
-  }
-
-  .card {
-    max-width: 100%;
-  }
-
   .container {
-    padding: 1.5em 1em;
+    padding: 1.5em 10px;
+    width: calc(100% - 20px);
   }
 
   header h1 {
@@ -150,5 +137,14 @@ header p {
 
   header p {
     font-size: 0.95rem;
+  }
+
+  .game-board {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .card {
+    max-width: 100px;
   }
 }
