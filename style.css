@@ -132,12 +132,12 @@ header p {
 
   .game-board {
     grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
+    gap: 15px;
     padding: 0 10px;
   }
 
   .card {
-    max-width: 100px;
+    max-width: 90px;
   }
 
   header h1 {
