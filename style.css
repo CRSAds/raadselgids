@@ -48,11 +48,11 @@ header p {
 
 .game-board {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 10px;
-  justify-content: center;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px; /* zowel verticaal als horizontaal */
   margin-top: 2em;
-  padding: 0;
+  justify-content: center; /* vervangt justify-items */
+  align-items: center;
 }
 
 .card {
