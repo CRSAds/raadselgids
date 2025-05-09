@@ -3,23 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Spelen & Winnen</title>
+  <title>Speel Memory en Win!</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Bovenbalk -->
+  <!-- Introductiescherm -->
   <header class="top-bar">
     <img src="assets/img/logo-spelenenwinnen.png" alt="Spelen & Winnen logo" class="logo" />
     <span class="top-text">De leukste spellen</span>
   </header>
 
-  <main class="intro-screen">
-    <!-- Afbeelding cadeaukaart -->
+  <main id="intro" class="intro-screen">
     <section class="image-card">
       <img src="assets/img/cadeaukaart.png" alt="Cadeaukaart prijs" />
     </section>
 
-    <!-- Titel + tekst + knop -->
     <section class="cta-card">
       <h2>Speel mee en WIN!</h2>
       <p>Speel het memory spel en maak kans op een cadeaukaart twv. <strong>€150</strong></p>
@@ -27,10 +25,18 @@
     </section>
   </main>
 
-  <script>
-    document.getElementById("start-btn").addEventListener("click", () => {
-      window.location.href = "game.html";
-    });
-  </script>
+  <!-- Spelscherm -->
+  <main id="game" class="game-screen hidden">
+    <section class="container">
+      <header>
+        <h1>🎯 TEST JE GEHEUGEN EN WIN!</h1>
+        <p>Onthoud waar de paren liggen en maak kans op een prijs!</p>
+      </header>
+      <div class="game-board" id="game-board"></div>
+    </section>
+    <button id="next-btn" class="hidden">Volgende ronde →</button>
+  </main>
+
+  <script src="game.js"></script>
 </body>
 </html>
