@@ -3,19 +3,40 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Memory Game</title>
+  <title>Memory Spel</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <main>
-    <div class="container">
-      <header>
-        <h1>🎯 TEST JE GEHEUGEN EN WIN!</h1>
-        <p>Onthoud waar de paren liggen en maak kans op een prijs!</p>
-      </header>
-      <div class="game-board" id="game-board"></div>
-    </div>
+    <!-- Introsectie -->
+    <section id="intro-section" class="intro">
+      <img src="assets/img/logo spelen en winnen.png" alt="Spelen en Winnen logo" class="intro-logo" />
+      <img src="assets/img/Header Speel en Win.png" alt="Cadeaubon prijs" class="intro-prize" />
+      <h1>Speel Memory en WIN!</h1>
+      <p>Speel mee en maak kans op een cadeaukaart naar keuze. Vind de juiste paren en wie weet win jij wel!</p>
+      <button id="start-game-btn">Start het spel</button>
+    </section>
+
+    <!-- Memory Game -->
+    <section id="game-section" class="hidden">
+      <div class="container">
+        <header>
+          <h1>🎯 TEST JE GEHEUGEN EN WIN!</h1>
+          <p>Onthoud waar de paren liggen en maak kans op een prijs!</p>
+        </header>
+        <div class="game-board" id="game-board"></div>
+        <button id="next-btn">Volgende ronde</button>
+      </div>
+    </section>
   </main>
+
   <script src="game.js"></script>
+  <script>
+    // Toggle naar spel
+    document.getElementById('start-game-btn').addEventListener('click', function () {
+      document.getElementById('intro-section').classList.add('hidden');
+      document.getElementById('game-section').classList.remove('hidden');
+    });
+  </script>
 </body>
 </html>
