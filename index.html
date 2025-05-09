@@ -3,23 +3,38 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Memoryspel</title>
+  <title>Speel en Win</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kavoon&family=Roboto+Mono&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <main>
-    <div class="container">
-      <header>
-        <h1>🎯 TEST JE GEHEUGEN EN WIN!</h1>
-        <p>Onthoud waar de paren liggen en maak kans op een prijs!</p>
-      </header>
+  <div class="start-screen">
+    <header>
+      <img src="assets/img/logo-spelen-en-winnen.png" alt="Logo Spelen en Winnen" class="logo" />
+      <span class="tagline">De leukste spellen</span>
+    </header>
 
-      <div class="game-board" id="gameBoard"></div>
+    <main class="content">
+      <div class="promo-image">
+        <img src="assets/img/cadeaukaart.png" alt="Cadeaukaart" />
+      </div>
+      <div class="promo-box">
+        <h1>Speel mee en win een cadeaukaart van €150!</h1>
+        <p>
+          Het spel van vandaag is <strong>MEMORY</strong>. <br/>
+          Vind de paren en win mooie prijzen.
+        </p>
+        <button id="start-btn">Start Spel →</button>
+      </div>
+    </main>
+  </div>
 
-      <button id="next-btn">Volgende ronde</button>
-    </div>
-  </main>
-
-  <script src="game.js"></script>
+  <script>
+    document.getElementById("start-btn").addEventListener("click", function () {
+      window.location.href = "spel.html"; // Aanpassen naar het juiste pad van je memory spel
+    });
+  </script>
 </body>
 </html>
