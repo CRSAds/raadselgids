@@ -1,3 +1,4 @@
+// Start spel
 document.getElementById('start-btn').addEventListener('click', () => {
   document.getElementById('intro').classList.add('hidden');
   document.getElementById('game-section').classList.remove('hidden');
@@ -23,8 +24,8 @@ function flipCard() {
   if (match) {
     matches++;
     flippedCard = null;
+
     if (matches === 6) {
-      // Alles gematched
       showNextButton();
       launchConfetti();
     }
@@ -42,10 +43,10 @@ function flipCard() {
 cards.forEach(card => card.addEventListener('click', flipCard));
 
 function showNextButton() {
-  document.getElementById('next-btn').style.display = 'block';
+  const btn = document.getElementById('next-btn');
+  btn.classList.remove('hidden');
 }
 
-// Confetti
 function launchConfetti() {
   if (window.confetti) {
     confetti({
@@ -55,9 +56,3 @@ function launchConfetti() {
     });
   }
 }
-
-// Start spel
-document.getElementById('start-game-btn').addEventListener('click', () => {
-  document.getElementById('intro').style.display = 'none';
-  document.querySelector('main').style.display = 'flex';
-});
