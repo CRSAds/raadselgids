@@ -3,45 +3,45 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Speel en Win Memory</title>
-  <link href="https://fonts.googleapis.com/css2?family=Kavoon&family=Roboto+Mono&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+  <title>Spelen en Winnen</title>
+  <link href="https://fonts.googleapis.com/css2?family=Kavoon&family=Roboto+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header>
-    <img src="assets/img/logo-spelen-en-winnen.png" alt="Spelen & Winnen logo" />
-    <span class="title">De leukste spellen</span>
+  <!-- Header alleen op mobiel -->
+  <header class="mobile-header">
+    <img src="./assets/img/logo-spelen-en-winnen.png" alt="Spelen & Winnen logo" class="mobile-logo" />
+    <span class="mobile-title">De leukste spellen</span>
   </header>
 
-  <section class="start-container" id="start-screen">
-    <div class="start-left">
-      <img src="assets/img/family-start.png" alt="Spelende mensen" />
+  <!-- Startscherm container -->
+  <div class="startscreen">
+    <!-- Alleen voor desktop: PNG met mensen en logo -->
+    <div class="hero-image desktop-only">
+      <img src="./assets/img/je-lokale-vriendelijke-dierenwinkel.png" alt="Mensen met logo" />
     </div>
-    <div class="start-right">
-      <h1>Speel mee en win een cadeaukaart van &euro;150!</h1>
-      <p>Het spel van vandaag is MEMORY.<br />
-      Vind de paren en win mooie prijzen.</p>
-      <button class="btn-start" onclick="startGame()">Start Spel &rarr;</button>
-      <img src="assets/img/cadeaukaart.png" alt="Cadeaukaart afbeelding" />
-    </div>
-  </section>
 
-  <main id="game-screen" style="display:none">
-    <div class="container">
-      <header>
-        <h1>🎯 TEST JE GEHEUGEN EN WIN!</h1>
-        <p>Onthoud waar de paren liggen en maak kans op een prijs!</p>
-      </header>
-      <div class="game-board" id="game-board"></div>
+    <!-- Startscherm content -->
+    <div class="start-content">
+      <h1 class="start-title">Speel mee en win een cadeaukaart van €150!</h1>
+      <p class="start-text">Het spel van vandaag is MEMORY. <br />Vind de paren en win mooie prijzen.</p>
+      <button class="start-button" onclick="startGame()">Start Spel →</button>
+      <div class="card-preview">
+        <img src="./assets/img/cadeaukaart.png" alt="Cadeaukaart afbeelding" />
+      </div>
     </div>
+  </div>
+
+  <!-- Memory spel container -->
+  <main class="game-container hidden">
+    <!-- Bestaande spelstructuur hier... -->
   </main>
 
   <script>
     function startGame() {
-      document.getElementById('start-screen').style.display = 'none';
-      document.getElementById('game-screen').style.display = 'block';
+      document.querySelector(".startscreen").classList.add("hidden");
+      document.querySelector(".game-container").classList.remove("hidden");
     }
   </script>
-  <script src="script.js"></script>
 </body>
 </html>
