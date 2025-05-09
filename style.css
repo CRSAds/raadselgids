@@ -1,52 +1,115 @@
-/* Algemeen */
+/* Algemene layout */
 body {
   margin: 0;
-  font-family: 'Zilla Slab', serif;
-  background: linear-gradient(to bottom, #e36ab1, #9054c4);
+  font-family: 'Roboto Mono', monospace;
   min-height: 100vh;
-  overflow-x: hidden;
+  background: linear-gradient(to bottom, #efcce7, #cf57b3);
+  color: #333;
 }
 
-main {
+/* Header bovenaan */
+.topbar {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  padding: 2em;
-}
-
-.container {
   background: white;
-  padding: 2em;
-  border-radius: 12px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-  width: 90%;
-  max-width: 800px;
-  text-align: center;
+  padding: 12px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
-header h1 {
+.topbar img {
+  height: 40px;
+}
+
+.topbar span {
+  color: #a03baf;
+  font-weight: bold;
+  font-size: 0.95rem;
+}
+
+/* Startscherm */
+#start-screen {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #ffeaf7;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+}
+
+#start-screen h1 {
+  font-family: 'Kavoon', cursive;
+  font-size: 1.6rem;
+  color: #b1008a;
+  margin: 20px 0 10px;
+}
+
+#start-screen p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #444;
+}
+
+#start-screen img.card-image {
+  max-width: 90%;
+  border-radius: 12px;
+  margin: 20px 0;
+}
+
+#start-screen button {
+  background: #ff7300;
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  font-size: 1.1rem;
+  font-family: 'Kavoon', cursive;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#start-screen button:hover {
+  background: #e55c00;
+}
+
+/* Verborgen memoryspel tot start */
+#memory-game {
+  display: none;
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 2em;
+  background: white;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Memory game header */
+#memory-game h1 {
+  font-family: 'Kavoon', cursive;
   font-size: 2rem;
   margin-bottom: 0.5em;
 }
 
-header p {
+#memory-game p {
   margin-top: 0;
   font-size: 1rem;
 }
 
-/* Spelrooster */
+/* Game grid */
 .game-board {
   display: grid;
-  grid-template-columns: repeat(4, auto);
+  grid-template-columns: repeat(4, 1fr);
   gap: 12px;
   justify-content: center;
-  margin: 2em auto 0;
   width: fit-content;
+  margin: 2em auto 0;
 }
 
 .card {
-  width: 120px;
-  height: 120px;
+  width: 100px;
+  height: 100px;
   background: transparent;
   transform-style: preserve-3d;
   transition: transform 0.4s ease;
@@ -54,7 +117,7 @@ header p {
   position: relative;
   border-radius: 10px;
   border: 6px solid #fff;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
 }
 
 .card.flip {
@@ -90,47 +153,47 @@ header p {
   pointer-events: none;
 }
 
-/* Button */
+/* Confetti & button na afronding */
 #next-btn {
-  margin-top: 2em;
-  padding: 12px 24px;
-  font-size: 1.1rem;
-  background: #28c76f;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
   display: none;
+  margin: 2em auto 0;
+  padding: 12px 24px;
+  font-size: 1.2rem;
+  font-family: 'Kavoon', cursive;
+  background: white;
+  border: 3px solid #ff7300;
+  border-radius: 10px;
+  color: #ff7300;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  cursor: pointer;
 }
 
-/* 📱 Mobiel */
+/* Mobiel */
 @media (max-width: 768px) {
-  .container {
-    width: 100%;
-    padding: 10px;
-    box-sizing: border-box;
-  }
-
   .game-board {
     grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    justify-content: center;
-    width: fit-content;
-    margin: 0 auto;
+    gap: 12px;
   }
 
   .card {
     width: 70px;
-    height: auto;
-    aspect-ratio: 1 / 1;
-    max-width: 90px;
+    height: 70px;
   }
 
-  header h1 {
+  #start-screen,
+  #memory-game {
+    margin: 20px 12px;
+    padding: 16px;
+  }
+
+  #start-screen h1,
+  #memory-game h1 {
     font-size: 1.4rem;
   }
 
-  header p {
+  #start-screen button,
+  #next-btn {
+    width: 100%;
     font-size: 1rem;
   }
 }
