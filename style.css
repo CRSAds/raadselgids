@@ -1,18 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@600&display=swap');
-
+/* Basisopmaak */
 body {
   margin: 0;
   font-family: 'Zilla Slab', serif;
   min-height: 100vh;
   background: radial-gradient(circle at center, #e36ab1, #9054c4);
+  position: relative;
   overflow-x: hidden;
 }
 
 main {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 2em;
+  padding: 1.5em;
 }
 
 .container {
@@ -20,8 +17,9 @@ main {
   padding: 2em;
   border-radius: 12px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 900px;
+  width: 90%;
+  max-width: 800px;
+  margin: 0 auto;
   box-sizing: border-box;
   text-align: center;
 }
@@ -36,19 +34,20 @@ header p {
   margin-top: 0;
 }
 
+/* Game grid */
 .game-board {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 12px;
-  margin: 2em auto;
-  width: fit-content;
   justify-content: center;
+  margin: 2em auto 0 auto;
+  width: fit-content;
 }
 
 .card {
+  width: 100%;
   aspect-ratio: 1 / 1;
-  width: 130px;
-  max-width: 22vw;
+  max-width: 120px;
   background: transparent;
   transform-style: preserve-3d;
   transition: transform 0.4s ease;
@@ -63,8 +62,7 @@ header p {
   transform: rotateY(180deg);
 }
 
-.card .front,
-.card .back {
+.card .front, .card .back {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -92,19 +90,59 @@ header p {
   pointer-events: none;
 }
 
-#next-btn {
+/* Button */
+#next-btn, #start-game-btn {
   margin-top: 2em;
-  padding: 12px 24px;
+  padding: 14px 24px;
   font-size: 1.1rem;
   background: #28c76f;
   color: white;
   border: none;
   border-radius: 8px;
   cursor: pointer;
+  display: inline-block;
+  font-weight: bold;
+}
+
+/* Introsectie */
+.intro {
+  text-align: center;
+  background: white;
+  border-radius: 12px;
+  padding: 2em 1.2em;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  max-width: 450px;
+  margin: 2em auto;
+  box-sizing: border-box;
+}
+
+.intro-logo {
+  max-width: 180px;
+  margin-bottom: 1em;
+}
+
+.intro-prize {
+  max-width: 240px;
+  border-radius: 8px;
+  margin-bottom: 1.5em;
+}
+
+.intro h1 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5em;
+}
+
+.intro p {
+  font-size: 1rem;
+  margin-bottom: 1.5em;
+}
+
+/* Helpers */
+.hidden {
   display: none;
 }
 
-/* 📱 Mobiel */
+/* Mobiel */
 @media (max-width: 768px) {
   .container {
     width: 100%;
