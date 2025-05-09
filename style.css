@@ -109,13 +109,13 @@ header p {
 @media (max-width: 768px) {
   .container {
     width: 100%;
-    padding: 12px;
+    padding: 10px;
     box-sizing: border-box;
   }
 
   .game-board {
     grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
+    gap: 10px;
     justify-content: center;
     width: fit-content;
     margin: 0 auto;
