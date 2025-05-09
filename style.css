@@ -1,10 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@600&display=swap');
-
+/* ===================================
+   BASISSTIJLEN (voor alle schermen)
+=================================== */
 body {
   margin: 0;
   font-family: 'Zilla Slab', serif;
   min-height: 100vh;
   background: radial-gradient(circle at center, #e36ab1, #9054c4);
+  position: relative;
   overflow-x: hidden;
 }
 
@@ -20,8 +22,8 @@ main {
   padding: 2em;
   border-radius: 12px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 900px;
+  width: 90%;
+  max-width: 800px;
   box-sizing: border-box;
   text-align: center;
 }
@@ -36,19 +38,23 @@ header p {
   margin-top: 0;
 }
 
+/* ===================================
+   DESKTOP: 4 kolommen, 3 rijen
+=================================== */
 .game-board {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 12px;
-  margin: 2em auto;
-  width: fit-content;
+  margin-top: 2em;
   justify-content: center;
+  width: fit-content;
+  max-width: 90vw;
 }
 
 .card {
+  width: 100%;
   aspect-ratio: 1 / 1;
-  width: 130px;
-  max-width: 22vw;
+  max-width: 120px;
   background: transparent;
   transform-style: preserve-3d;
   transition: transform 0.4s ease;
@@ -58,6 +64,7 @@ header p {
   border: 6px solid #fff;
   box-shadow: 0 2px 4px rgba(0,0,0,0.08);
 }
+
 .card.flip {
   transform: rotateY(180deg);
 }
@@ -91,26 +98,19 @@ header p {
   pointer-events: none;
 }
 
-#next-btn {
-  margin-top: 2em;
-  padding: 12px 24px;
-  font-size: 1.1rem;
-  background: #28c76f;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  display: none;
-}
-
-/* 📱 Mobiel */
+/* ===================================
+   MOBIEL (max-width: 768px)
+   - 3 kolommen, 4 rijen
+   - witte kader iets breder
+=================================== */
 @media (max-width: 768px) {
   .container {
-    padding: 1.5em 10px;
+    width: 94%;
+    padding: 1.5em 0.5em;
   }
 
   header h1 {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
 
   header p {
@@ -118,8 +118,11 @@ header p {
   }
 
   .game-board {
-    grid-template-columns: repeat(3, 1fr); /* ✅ Op mobiel 3 kolommen */
+    grid-template-columns: repeat(3, 1fr);
     gap: 10px;
+    margin: 1.5em auto 0;
+    justify-content: center;
+    width: fit-content;
   }
 
   .card {
