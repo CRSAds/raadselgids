@@ -1,3 +1,8 @@
+document.getElementById('start-btn').addEventListener('click', () => {
+  document.getElementById('intro').classList.add('hidden');
+  document.getElementById('game-section').classList.remove('hidden');
+});
+
 const cards = document.querySelectorAll('.card');
 let flippedCard = null;
 let lockBoard = false;
