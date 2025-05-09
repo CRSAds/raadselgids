@@ -17,7 +17,7 @@ function createCard(name) {
 
   card.innerHTML = `
     <div class="front">
-      <img src="assets/img/question-mark.png" alt="kaart" />
+      <img src="assets/img/card-icon.png" alt="kaart" />
     </div>
     <div class="back">
       <img src="assets/img/${name}.png" alt="${name}" />
