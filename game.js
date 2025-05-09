@@ -1,58 +1,89 @@
-// Start spel
-document.getElementById('start-btn').addEventListener('click', () => {
-  document.getElementById('intro').classList.add('hidden');
-  document.getElementById('game-section').classList.remove('hidden');
-});
+const cards = [
+  "bananas", "bananas",
+  "grape", "grape",
+  "cherries", "cherries",
+  "pineapple", "pineapple",
+  "strawberry", "strawberry",
+  "watermelon", "watermelon"
+];
 
-const cards = document.querySelectorAll('.card');
-let flippedCard = null;
+const gameBoard = document.getElementById("gameBoard");
+const nextBtn = document.getElementById("next-btn");
+
+let firstCard = null;
 let lockBoard = false;
-let matches = 0;
+let matchedPairs = 0;
 
-function flipCard() {
-  if (lockBoard || this === flippedCard) return;
+function shuffle(array) {
+  return array.sort(() => Math.random() - 0.5);
+}
 
-  this.classList.add('flip');
+function createCard(name) {
+  const card = document.createElement("div");
+  card.classList.add("card");
+  card.dataset.name = name;
 
-  if (!flippedCard) {
-    flippedCard = this;
-    return;
-  }
+  const front = document.createElement("div");
+  front.classList.add("front");
+  const frontImg = document.createElement("img");
+  frontImg.src = "assets/img/card-icon.png";
+  front.appendChild(frontImg);
 
-  const match = flippedCard.dataset.image === this.dataset.image;
+  const back = document.createElement("div");
+  back.classList.add("back");
+  const backImg = document.createElement("img");
+  backImg.src = `assets/img/${name}.png`;
+  back.appendChild(backImg);
 
-  if (match) {
-    matches++;
-    flippedCard = null;
+  card.appendChild(front);
+  card.appendChild(back);
 
-    if (matches === 6) {
-      showNextButton();
-      launchConfetti();
+  card.addEventListener("click", () => {
+    if (lockBoard || card.classList.contains("flip")) return;
+
+    card.classList.add("flip");
+
+    if (!firstCard) {
+      firstCard = card;
+    } else {
+      if (firstCard.dataset.name === card.dataset.name) {
+        matchedPairs++;
+        firstCard = null;
+        if (matchedPairs === cards.length / 2) {
+          setTimeout(() => {
+            nextBtn.style.display = "inline-block";
+          }, 500);
+        }
+      } else {
+        lockBoard = true;
+        setTimeout(() => {
+          card.classList.remove("flip");
+          firstCard.classList.remove("flip");
+          firstCard = null;
+          lockBoard = false;
+        }, 1000);
+      }
     }
-  } else {
-    lockBoard = true;
-    setTimeout(() => {
-      this.classList.remove('flip');
-      flippedCard.classList.remove('flip');
-      flippedCard = null;
-      lockBoard = false;
-    }, 800);
-  }
+  });
+
+  return card;
 }
 
-cards.forEach(card => card.addEventListener('click', flipCard));
+function initGame() {
+  gameBoard.innerHTML = "";
+  matchedPairs = 0;
+  firstCard = null;
+  lockBoard = false;
+  nextBtn.style.display = "none";
 
-function showNextButton() {
-  const btn = document.getElementById('next-btn');
-  btn.classList.remove('hidden');
+  const shuffled = shuffle([...cards]);
+  shuffled.forEach((name) => {
+    const card = createCard(name);
+    gameBoard.appendChild(card);
+  });
 }
 
-function launchConfetti() {
-  if (window.confetti) {
-    confetti({
-      particleCount: 120,
-      spread: 70,
-      origin: { y: 0.4 },
-    });
-  }
-}
+nextBtn.addEventListener("click", initGame);
+
+// Start bij laden
+initGame();
