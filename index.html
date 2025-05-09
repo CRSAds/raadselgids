@@ -3,39 +3,45 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Spelen & Winnen</title>
+  <title>Speel en Win</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- 1. Topbar -->
+  <!-- Header -->
   <div class="topbar">
-    <img src="assets/img/logo-spelen-en-winnen.png" alt="Spelen & Winnen logo" />
-    <span>De leukste spellen</span>
+    <img src="assets/img/logo-spelen-en-winnen.png" alt="Spelen & Winnen logo" class="logo" />
+    <span class="tagline">De leukste spellen</span>
   </div>
 
-  <!-- 2. Intro met prijs -->
-  <section class="intro">
-    <div class="card">
-      <img src="assets/img/cadeaukaart.png" alt="Cadeaukaart prijs" />
+  <!-- Intro Section -->
+  <main class="intro">
+    <div class="card image-card">
+      <img src="assets/img/cadeaukaart.png" alt="Cadeaukaart" />
     </div>
-    <div class="card">
+    <div class="card text-card">
       <h2>Speel mee en WIN!</h2>
-      <p>Speel het memory spel en maak kans op een cadeaukaart t.w.v. €150!</p>
-      <button class="start-button" onclick="startGame()">Start Spel →</button>
+      <p>
+        Speel het memory spel<br />
+        en maak kans op een<br />
+        cadeaukaart t.w.v.<br />
+        €150!
+      </p>
+      <a href="#game" class="start-button">Start Spel →</a>
     </div>
-  </section>
+  </main>
 
-  <!-- 3. Memory Game -->
-  <main>
-    <div class="container">
+  <!-- Spel -->
+  <section id="game">
+    <div class="game-container">
       <header>
         <h1>🎯 TEST JE GEHEUGEN EN WIN!</h1>
         <p>Onthoud waar de paren liggen en maak kans op een prijs!</p>
       </header>
-      <div class="game-board" id="game-board"></div>
-      <button id="next-btn" onclick="nextRound()">Volgende ronde</button>
+      <div class="game-board" id="game-board">
+        <!-- JS genereert hier de kaarten -->
+      </div>
     </div>
-  </main>
+  </section>
 
   <script src="game.js"></script>
 </body>
