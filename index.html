@@ -1,38 +1,48 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Speel en Win</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </head>
 <body>
-  <!-- Aankondiging scherm -->
-  <section class="pre-game">
-    <header class="branding">
-      <img src="assets/img/logo-spelen-en-winnen.png" alt="Spelen & Winnen logo">
-      <h1>De leukste spellen</h1>
-    </header>
-    <div class="prize-image">
-      <img src="assets/img/cadeaukaart.png" alt="Cadeaubon prijs">
-    </div>
-    <div class="intro-text">
-      <h2>Speel Memory en WIN!</h2>
-      <p>Onthoud waar de paren liggen en maak kans op een prijs!</p>
-    </div>
-    <button id="start-button">Start Spel →</button>
+
+  <!-- Introsectie -->
+  <section id="intro">
+    <img src="assets/img/logo.png" alt="Spelen & Winnen logo" class="logo" />
+    <h2>De leukste spellen</h2>
+    <img src="assets/img/cadeaukaart.png" alt="Cadeaubon" class="price" />
+    <h3>Speel Memory en WIN!</h3>
+    <p>Onthoud waar de paren liggen en maak kans op een prijs!</p>
+    <button id="start-game-btn">Start Spel →</button>
   </section>
 
-  <!-- Memory Game -->
-  <main class="game hidden">
+  <!-- Memoryspel -->
+  <main>
     <div class="container">
       <header>
         <h1>🎯 TEST JE GEHEUGEN EN WIN!</h1>
         <p>Onthoud waar de paren liggen en maak kans op een prijs!</p>
       </header>
-      <div class="game-board" id="game-board"></div>
+      <div class="game-board">
+        <!-- 6 paren = 12 kaarten -->
+        <div class="card" data-image="1"><div class="front"><img src="assets/img/question-mark.png" /></div><div class="back"><img src="assets/img/bananas.png" /></div></div>
+        <div class="card" data-image="1"><div class="front"><img src="assets/img/question-mark.png" /></div><div class="back"><img src="assets/img/bananas.png" /></div></div>
+        <div class="card" data-image="2"><div class="front"><img src="assets/img/question-mark.png" /></div><div class="back"><img src="assets/img/grape.png" /></div></div>
+        <div class="card" data-image="2"><div class="front"><img src="assets/img/question-mark.png" /></div><div class="back"><img src="assets/img/grape.png" /></div></div>
+        <div class="card" data-image="3"><div class="front"><img src="assets/img/question-mark.png" /></div><div class="back"><img src="assets/img/pineapple.png" /></div></div>
+        <div class="card" data-image="3"><div class="front"><img src="assets/img/question-mark.png" /></div><div class="back"><img src="assets/img/pineapple.png" /></div></div>
+        <div class="card" data-image="4"><div class="front"><img src="assets/img/question-mark.png" /></div><div class="back"><img src="assets/img/strawberry.png" /></div></div>
+        <div class="card" data-image="4"><div class="front"><img src="assets/img/question-mark.png" /></div><div class="back"><img src="assets/img/strawberry.png" /></div></div>
+        <div class="card" data-image="5"><div class="front"><img src="assets/img/question-mark.png" /></div><div class="back"><img src="assets/img/watermelon.png" /></div></div>
+        <div class="card" data-image="5"><div class="front"><img src="assets/img/question-mark.png" /></div><div class="back"><img src="assets/img/watermelon.png" /></div></div>
+        <div class="card" data-image="6"><div class="front"><img src="assets/img/question-mark.png" /></div><div class="back"><img src="assets/img/cherries.png" /></div></div>
+        <div class="card" data-image="6"><div class="front"><img src="assets/img/question-mark.png" /></div><div class="back"><img src="assets/img/cherries.png" /></div></div>
+      </div>
+      <button id="next-btn">Volgende ronde</button>
     </div>
-    <button id="next-btn" class="hidden">Volgende ronde</button>
   </main>
 
   <script src="game.js"></script>
