@@ -38,15 +38,17 @@ header p {
 
 .game-board {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* ✅ Vaste 4 kolommen */
+  grid-template-columns: repeat(4, 1fr);
   gap: 12px;
-  margin-top: 2em;
-  justify-content: center; /* ✅ Zorgt voor centrering */
+  margin: 2em auto;
+  width: fit-content;
+  justify-content: center;
 }
 
 .card {
-  width: 100%;
   aspect-ratio: 1 / 1;
+  width: 130px;
+  max-width: 22vw;
   background: transparent;
   transform-style: preserve-3d;
   transition: transform 0.4s ease;
@@ -55,9 +57,7 @@ header p {
   border-radius: 10px;
   border: 6px solid #fff;
   box-shadow: 0 2px 4px rgba(0,0,0,0.08);
-  max-width: 130px; /* ✅ Houdt kaarten beperkt */
 }
-
 .card.flip {
   transform: rotateY(180deg);
 }
