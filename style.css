@@ -1,77 +1,125 @@
-/* Algemene layout */
+/* Algemene instellingen */
 body {
   margin: 0;
   font-family: 'Roboto Mono', monospace;
-  min-height: 100vh;
-  background: linear-gradient(to bottom, #efcce7, #cf57b3);
-  color: #333;
+  background: linear-gradient(to bottom, #fbd6ec, #d66ac1);
+  color: #000;
 }
 
-/* Header bovenaan */
-.topbar {
+/* Startscherm container */
+.start-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  background-color: #ffe9f4;
+  border-radius: 12px;
+  box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+  .start-wrapper {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+/* Afbeelding links op desktop */
+.start-image {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 8px;
+}
+
+@media (min-width: 768px) {
+  .start-image {
+    margin-right: 2rem;
+  }
+}
+
+/* Content rechts */
+.start-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 500px;
+}
+
+@media (min-width: 768px) {
+  .start-content {
+    align-items: flex-start;
+    text-align: left;
+  }
+}
+
+/* Titels */
+.start-title {
+  font-family: 'Kavoon', cursive;
+  font-size: 1.5rem;
+  color: #a10074;
+  margin: 1rem 0 0.5rem;
+}
+
+/* Paragraaf */
+.start-text {
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+/* Start button */
+.start-button {
+  font-family: 'Kavoon', cursive;
+  font-size: 1rem;
+  background-color: #ff7700;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  cursor: pointer;
+  margin-bottom: 2rem;
+}
+
+.start-button:hover {
+  background-color: #e26700;
+}
+
+/* Cadeaukaart afbeelding */
+.prize-image {
+  width: 100%;
+  max-width: 300px;
+}
+
+/* Alleen mobiel */
+.mobile-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   background: white;
-  padding: 12px 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  padding: 12px 16px;
+  box-sizing: border-box;
 }
 
-.topbar img {
+.mobile-logo {
   height: 40px;
 }
 
-.topbar span {
-  color: #a03baf;
+.mobile-text {
+  font-size: 1rem;
+  color: #a10074;
   font-weight: bold;
-  font-size: 0.95rem;
-}
-
-/* Startscherm */
-#start-screen {
-  max-width: 800px;
-  margin: 40px auto;
-  padding: 20px;
-  background: #ffeaf7;
-  border-radius: 16px;
-  text-align: center;
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
-}
-
-#start-screen h1 {
   font-family: 'Kavoon', cursive;
-  font-size: 1.6rem;
-  color: #b1008a;
-  margin: 20px 0 10px;
 }
 
-#start-screen p {
-  font-size: 0.95rem;
-  line-height: 1.5;
-  color: #444;
+@media (min-width: 768px) {
+  .mobile-header {
+    display: none;
+  }
 }
 
-#start-screen img.card-image {
-  max-width: 90%;
-  border-radius: 12px;
-  margin: 20px 0;
-}
-
-#start-screen button {
-  background: #ff7300;
-  color: white;
-  border: none;
-  padding: 14px 28px;
-  font-size: 1.1rem;
-  font-family: 'Kavoon', cursive;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-#start-screen button:hover {
-  background: #e55c00;
-}
 
 /* Verborgen memoryspel tot start */
 #memory-game {
