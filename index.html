@@ -3,38 +3,45 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Speel en Win</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Kavoon&family=Roboto+Mono&display=swap" rel="stylesheet">
+  <title>Speel en Win Memory</title>
+  <link href="https://fonts.googleapis.com/css2?family=Kavoon&family=Roboto+Mono&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="start-screen">
-    <header>
-      <img src="assets/img/logo-spelen-en-winnen.png" alt="Logo Spelen en Winnen" class="logo" />
-      <span class="tagline">De leukste spellen</span>
-    </header>
+  <header>
+    <img src="assets/img/logo-spelen-en-winnen.png" alt="Spelen & Winnen logo" />
+    <span class="title">De leukste spellen</span>
+  </header>
 
-    <main class="content">
-      <div class="promo-image">
-        <img src="assets/img/cadeaukaart.png" alt="Cadeaukaart" />
-      </div>
-      <div class="promo-box">
-        <h1>Speel mee en win een cadeaukaart van €150!</h1>
-        <p>
-          Het spel van vandaag is <strong>MEMORY</strong>. <br/>
-          Vind de paren en win mooie prijzen.
-        </p>
-        <button id="start-btn">Start Spel →</button>
-      </div>
-    </main>
-  </div>
+  <section class="start-container" id="start-screen">
+    <div class="start-left">
+      <img src="assets/img/family-start.png" alt="Spelende mensen" />
+    </div>
+    <div class="start-right">
+      <h1>Speel mee en win een cadeaukaart van &euro;150!</h1>
+      <p>Het spel van vandaag is MEMORY.<br />
+      Vind de paren en win mooie prijzen.</p>
+      <button class="btn-start" onclick="startGame()">Start Spel &rarr;</button>
+      <img src="assets/img/cadeaukaart.png" alt="Cadeaukaart afbeelding" />
+    </div>
+  </section>
+
+  <main id="game-screen" style="display:none">
+    <div class="container">
+      <header>
+        <h1>🎯 TEST JE GEHEUGEN EN WIN!</h1>
+        <p>Onthoud waar de paren liggen en maak kans op een prijs!</p>
+      </header>
+      <div class="game-board" id="game-board"></div>
+    </div>
+  </main>
 
   <script>
-    document.getElementById("start-btn").addEventListener("click", function () {
-      window.location.href = "spel.html"; // Aanpassen naar het juiste pad van je memory spel
-    });
+    function startGame() {
+      document.getElementById('start-screen').style.display = 'none';
+      document.getElementById('game-screen').style.display = 'block';
+    }
   </script>
+  <script src="script.js"></script>
 </body>
 </html>
