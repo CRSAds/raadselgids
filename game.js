@@ -1,54 +1,58 @@
-const board = document.getElementById('game-board');
-const nextBtn = document.getElementById('next-btn');
+const cards = document.querySelectorAll('.card');
+let flippedCard = null;
+let lockBoard = false;
+let matches = 0;
 
-const images = [
-  'bananas.png',
-  'cherries.png',
-  'grape.png',
-  'pineapple.png',
-  'strawberry.png',
-  'watermelon.png'
-];
+function flipCard() {
+  if (lockBoard || this === flippedCard) return;
 
-let cards = [...images, ...images]; // Dubbel voor paren
-cards.sort(() => Math.random() - 0.5);
+  this.classList.add('flip');
 
-let flipped = [];
-let matched = [];
+  if (!flippedCard) {
+    flippedCard = this;
+    return;
+  }
 
-cards.forEach((img, index) => {
-  const card = document.createElement('div');
-  card.classList.add('card');
-  card.dataset.image = img;
+  const match = flippedCard.dataset.image === this.dataset.image;
 
-  card.innerHTML = `
-    <div class="front"><img src="assets/img/card-icon.png" alt="?" /></div>
-    <div class="back"><img src="assets/img/${img}" alt="${img}" /></div>
-  `;
-
-  card.addEventListener('click', () => {
-    if (card.classList.contains('flip') || flipped.length === 2) return;
-
-    card.classList.add('flip');
-    flipped.push(card);
-
-    if (flipped.length === 2) {
-      const [first, second] = flipped;
-      if (first.dataset.image === second.dataset.image) {
-        matched.push(first, second);
-        flipped = [];
-        if (matched.length === cards.length) {
-          nextBtn.style.display = 'block';
-        }
-      } else {
-        setTimeout(() => {
-          first.classList.remove('flip');
-          second.classList.remove('flip');
-          flipped = [];
-        }, 800);
-      }
+  if (match) {
+    matches++;
+    flippedCard = null;
+    if (matches === 6) {
+      // Alles gematched
+      showNextButton();
+      launchConfetti();
     }
-  });
+  } else {
+    lockBoard = true;
+    setTimeout(() => {
+      this.classList.remove('flip');
+      flippedCard.classList.remove('flip');
+      flippedCard = null;
+      lockBoard = false;
+    }, 800);
+  }
+}
 
-  board.appendChild(card);
+cards.forEach(card => card.addEventListener('click', flipCard));
+
+function showNextButton() {
+  document.getElementById('next-btn').style.display = 'block';
+}
+
+// Confetti
+function launchConfetti() {
+  if (window.confetti) {
+    confetti({
+      particleCount: 120,
+      spread: 70,
+      origin: { y: 0.4 },
+    });
+  }
+}
+
+// Start spel
+document.getElementById('start-game-btn').addEventListener('click', () => {
+  document.getElementById('intro').style.display = 'none';
+  document.querySelector('main').style.display = 'flex';
 });
