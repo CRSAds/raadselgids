@@ -1,73 +1,64 @@
 const cards = [
-  'bananas.png', 'bananas.png',
-  'grape.png', 'grape.png',
-  'pineapple.png', 'pineapple.png',
-  'cherries.png', 'cherries.png',
-  'strawberry.png', 'strawberry.png',
-  'watermelon.png', 'watermelon.png'
+  'banana', 'cherries', 'grape', 'pineapple', 'strawberry', 'watermelon'
 ];
 
 const gameBoard = document.getElementById('game-board');
-const nextBtn = document.getElementById('next-btn');
-let flippedCards = [];
-let matched = [];
+let selectedCards = [];
+let lockBoard = false;
 
 function shuffle(array) {
-  return array.sort(() => Math.random() - 0.5);
+  return [...array, ...array].sort(() => 0.5 - Math.random());
 }
 
-function createBoard() {
-  const shuffled = shuffle([...cards]);
-  gameBoard.innerHTML = '';
-  matched = [];
+function createCard(name) {
+  const card = document.createElement('div');
+  card.classList.add('card');
+  card.dataset.name = name;
 
-  shuffled.forEach((src, i) => {
-    const card = document.createElement('div');
-    card.classList.add('card');
-    card.dataset.image = src;
+  card.innerHTML = `
+    <div class="front">
+      <img src="assets/img/question-mark.png" alt="kaart" />
+    </div>
+    <div class="back">
+      <img src="assets/img/${name}.png" alt="${name}" />
+    </div>
+  `;
 
-    card.innerHTML = `
-      <div class="front">
-        <img src="assets/img/card-icon.png" alt="front" />
-      </div>
-      <div class="back">
-        <img src="assets/img/${src}" alt="fruit" />
-      </div>
-    `;
+  card.addEventListener('click', () => flipCard(card));
+  return card;
+}
 
-    card.addEventListener('click', () => flipCard(card));
+function flipCard(card) {
+  if (lockBoard || card.classList.contains('flip') || selectedCards.includes(card)) return;
+
+  card.classList.add('flip');
+  selectedCards.push(card);
+
+  if (selectedCards.length === 2) {
+    lockBoard = true;
+    setTimeout(checkMatch, 800);
+  }
+}
+
+function checkMatch() {
+  const [first, second] = selectedCards;
+  if (first.dataset.name === second.dataset.name) {
+    selectedCards = [];
+    lockBoard = false;
+  } else {
+    first.classList.remove('flip');
+    second.classList.remove('flip');
+    selectedCards = [];
+    lockBoard = false;
+  }
+}
+
+function initGame() {
+  const shuffled = shuffle(cards);
+  shuffled.forEach(name => {
+    const card = createCard(name);
     gameBoard.appendChild(card);
   });
 }
 
-function flipCard(card) {
-  if (flippedCards.length === 2 || card.classList.contains('flip')) return;
-
-  card.classList.add('flip');
-  flippedCards.push(card);
-
-  if (flippedCards.length === 2) {
-    const [a, b] = flippedCards;
-    if (a.dataset.image === b.dataset.image) {
-      matched.push(a.dataset.image);
-      flippedCards = [];
-
-      if (matched.length === cards.length / 2) {
-        nextBtn.style.display = 'inline-block';
-      }
-    } else {
-      setTimeout(() => {
-        a.classList.remove('flip');
-        b.classList.remove('flip');
-        flippedCards = [];
-      }, 1000);
-    }
-  }
-}
-
-nextBtn.addEventListener('click', () => {
-  nextBtn.style.display = 'none';
-  createBoard();
-});
-
-createBoard();
+initGame();
