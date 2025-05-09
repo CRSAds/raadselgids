@@ -1,28 +1,35 @@
-/* Algemeen */
-body {
+/* Algemene reset */
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Kleuren */
+body {
   font-family: 'Arial', sans-serif;
-  background: linear-gradient(to bottom, #fbd2ec, #c05ccf);
+  background: linear-gradient(to bottom, #fdddf4 0%, #c758cb 100%);
   color: #000;
 }
 
-/* Topbar */
+/* Topbalk */
 .topbar {
+  background: white;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  background: #fff;
-  padding: 12px 16px;
+  justify-content: space-between;
+  padding: 8px 16px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
-.topbar .logo {
-  height: 30px;
+.logo {
+  height: 32px;
 }
 
-.topbar .tagline {
-  font-weight: 600;
-  color: #a233c3;
-  font-size: 0.95rem;
+.topbar-text {
+  color: #a02bc0;
+  font-weight: bold;
+  font-size: 14px;
 }
 
 /* Intro */
@@ -30,81 +37,79 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 24px 16px;
-  gap: 20px;
+  gap: 24px;
+  padding: 32px 16px;
 }
 
 .card {
-  background: #fff;
-  border-radius: 16px;
-  padding: 20px;
-  max-width: 340px;
-  width: 100%;
-  text-align: center;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-}
-
-.image-card img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-}
-
-.text-card h2 {
-  margin-top: 0;
-  font-size: 1.4rem;
-}
-
-.text-card p {
-  margin: 0 0 16px;
-  line-height: 1.5;
-}
-
-.start-button {
-  background: #ff7900;
-  color: white;
-  font-weight: 600;
-  padding: 12px 24px;
-  border-radius: 8px;
-  text-decoration: none;
-  display: inline-block;
-  transition: background 0.2s ease;
-}
-
-.start-button:hover {
-  background: #e06500;
-}
-
-/* Game */
-#game {
-  padding: 40px 16px;
-}
-
-.game-container {
   background: white;
-  max-width: 960px;
-  margin: 0 auto;
   padding: 24px;
-  border-radius: 16px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.shadow {
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.card img {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+}
+
+.card h2 {
+  font-size: 1.4rem;
+  margin-bottom: 8px;
+}
+
+.card p {
+  font-size: 1rem;
+  margin-bottom: 16px;
+}
+
+#start-btn {
+  background: #ff7c00;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+/* Spel */
+.container {
+  background: white;
+  padding: 2em;
+  border-radius: 12px;
+  width: fit-content;
+  margin: 40px auto;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.05);
   text-align: center;
 }
 
 header h1 {
-  font-size: 1.8rem;
-  margin-bottom: 8px;
+  margin-bottom: 0.5em;
+  font-size: 2rem;
 }
 
 header p {
-  margin-bottom: 24px;
+  font-size: 1rem;
+  margin-top: 0;
 }
 
 .game-board {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 12px;
-  justify-content: center;
-  width: fit-content;
-  margin: 0 auto;
+  justify-items: center;
+  margin-top: 2em;
+}
+
+/* Kaarten */
+.card, .card * {
+  pointer-events: auto;
 }
 
 .card {
@@ -125,7 +130,8 @@ header p {
   transform: rotateY(180deg);
 }
 
-.card .front, .card .back {
+.card .front,
+.card .back {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -134,6 +140,7 @@ header p {
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 
 .card .front {
@@ -152,9 +159,47 @@ header p {
   pointer-events: none;
 }
 
+/* Volgende ronde knop */
+.overlay-btn {
+  margin-top: 2em;
+  padding: 12px 24px;
+  font-size: 1.1rem;
+  background: white;
+  color: #ff7c00;
+  border: 2px solid #ff7c00;
+  border-radius: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Verborgen elementen */
+.hidden {
+  display: none;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .game-board {
     grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 0 auto;
+  }
+
+  .container {
+    width: 100%;
+    padding: 12px;
+  }
+
+  .card {
+    max-width: 90px;
+  }
+
+  .card img {
+    width: 70%;
+    height: 70%;
   }
 }
