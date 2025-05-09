@@ -38,9 +38,10 @@ header p {
 
 .game-board {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  grid-template-columns: repeat(4, 1fr); /* ✅ Vaste 4 kolommen */
   gap: 12px;
   margin-top: 2em;
+  justify-content: center; /* ✅ Zorgt voor centrering */
 }
 
 .card {
@@ -54,6 +55,7 @@ header p {
   border-radius: 10px;
   border: 6px solid #fff;
   box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+  max-width: 130px; /* ✅ Houdt kaarten beperkt */
 }
 
 .card.flip {
@@ -101,6 +103,7 @@ header p {
   display: none;
 }
 
+/* 📱 Mobiel */
 @media (max-width: 768px) {
   .container {
     padding: 1.5em 10px;
@@ -115,7 +118,11 @@ header p {
   }
 
   .game-board {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr); /* ✅ Op mobiel 3 kolommen */
     gap: 10px;
+  }
+
+  .card {
+    max-width: 100px;
   }
 }
