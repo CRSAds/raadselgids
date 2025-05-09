@@ -1,5 +1,5 @@
 const cards = [
-  'banana', 'cherries', 'grape', 'pineapple', 'strawberry', 'watermelon'
+  'bananas', 'cherries', 'grape', 'pineapple', 'strawberry', 'watermelon'
 ];
 
 const gameBoard = document.getElementById('game-board');
